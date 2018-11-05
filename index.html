@@ -155,8 +155,8 @@
 
       <div class="row featurette">
         <div class="col-md-7">
-          <h2 class="featurette-heading">我的CSDN主頁 <span class="text-muted">記錄</span></h2>
-          <p class="lead">Donec ullamcorper nulla non metus auctor fringilla. Vestibulum id ligula porta felis euismod semper. Praesent commodo cursus magna, vel scelerisque nisl consectetur. Fusce dapibus, tellus ac cursus commodo.</p>
+          <h2 class="featurette-heading">我的博客 <span class="text-muted">CSDN主頁</span></h2>
+          <p class="lead">想發只是曇花，文字才是永恆。</p>
         </div>
         <div class="col-md-5" id="csdnQRcode">
           <!-- <img class="featurette-image img-responsive center-block" data-src="holder.js/500x500/auto" alt="Generic placeholder image"> -->
@@ -167,11 +167,11 @@
 
       <div class="row featurette">
         <div class="col-md-7 col-md-push-5">
-          <h2 class="featurette-heading">Oh yeah, it's that good. <span class="text-muted">See for yourself.</span></h2>
-          <p class="lead">Donec ullamcorper nulla non metus auctor fringilla. Vestibulum id ligula porta felis euismod semper. Praesent commodo cursus magna, vel scelerisque nisl consectetur. Fusce dapibus, tellus ac cursus commodo.</p>
+          <h2 class="featurette-heading">我的微信 <span class="text-muted">微信號：yimcarson</span></h2>
+          <p class="lead"></p>
         </div>
-        <div class="col-md-5 col-md-pull-7">
-          <img class="featurette-image img-responsive center-block" data-src="holder.js/500x500/auto" alt="Generic placeholder image">
+        <div class="col-md-5 col-md-pull-7" id="weChatQRcode"> 
+          <!-- <img class="featurette-image img-responsive center-block" data-src="holder.js/500x500/auto" alt="Generic placeholder image"> -->
         </div>
       </div>
 
@@ -214,8 +214,18 @@
     <script type="text/javascript">
       var qrcode = new QRCode(document.getElementById("csdnQRcode"), {
         text: "https://me.csdn.net/yimcarson",
-        width: 500,
-        height: 500,
+        width: 450,
+        height: 450,
+        colorDark : "#000000",
+        colorLight : "#ffffff",
+        correctLevel : QRCode.CorrectLevel.L
+        // [L|M|Q|H]
+      });
+       
+      var qrcode = new QRCode(document.getElementById("weChatQRcode"), {
+        text: "https://u.wechat.com/MH2FRtcOyzrPwzy8UmzK5Xs",
+        width: 450,
+        height: 450,
         colorDark : "#000000",
         colorLight : "#ffffff",
         correctLevel : QRCode.CorrectLevel.L
