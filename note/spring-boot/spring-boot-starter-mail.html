@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html lang="en-US">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>Spring Boot环境中发送邮件 | Kaysen&#39;s blog</title>
+    <meta name="generator" content="VuePress 1.8.2">
+    
+    <meta name="description" content="Just playing around">
+    
+    <link rel="preload" href="/assets/css/0.styles.2ef9e0c9.css" as="style"><link rel="preload" href="/assets/js/app.4d919b69.js" as="script"><link rel="preload" href="/assets/js/2.42c6ae38.js" as="script"><link rel="preload" href="/assets/js/13.91ef520a.js" as="script"><link rel="prefetch" href="/assets/js/10.d5f82858.js"><link rel="prefetch" href="/assets/js/11.0b203a46.js"><link rel="prefetch" href="/assets/js/12.ad77b067.js"><link rel="prefetch" href="/assets/js/3.38df5c0a.js"><link rel="prefetch" href="/assets/js/4.989f8b1d.js"><link rel="prefetch" href="/assets/js/5.5d3de586.js"><link rel="prefetch" href="/assets/js/6.f87804d9.js"><link rel="prefetch" href="/assets/js/7.11df132b.js"><link rel="prefetch" href="/assets/js/8.eb16add6.js"><link rel="prefetch" href="/assets/js/9.042ac3b8.js">
+    <link rel="stylesheet" href="/assets/css/0.styles.2ef9e0c9.css">
+  </head>
+  <body>
+    <div id="app" data-server-rendered="true"><div class="theme-container"><header class="navbar"><div class="sidebar-button"><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" role="img" viewBox="0 0 448 512" class="icon"><path fill="currentColor" d="M436 124H12c-6.627 0-12-5.373-12-12V80c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12zm0 160H12c-6.627 0-12-5.373-12-12v-32c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12zm0 160H12c-6.627 0-12-5.373-12-12v-32c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12z"></path></svg></div> <a href="/" class="home-link router-link-active"><!----> <span class="site-name">Kaysen's blog</span></a> <div class="links"><div class="search-box"><input aria-label="Search" autocomplete="off" spellcheck="false" value=""> <!----></div> <nav class="nav-links can-hide"><div class="nav-item"><a href="/" class="nav-link">
+  主页
+</a></div><div class="nav-item"><a href="/note/" class="nav-link router-link-active">
+  学习笔记
+</a></div><div class="nav-item"><a href="/memo/" class="nav-link">
+  备忘录
+</a></div><div class="nav-item"><a href="https://github.com/kaysenyim/blog" target="_blank" rel="noopener noreferrer" class="nav-link external">
+  GitHub
+  <span><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg> <span class="sr-only">(opens new window)</span></span></a></div> <!----></nav></div></header> <div class="sidebar-mask"></div> <aside class="sidebar"><nav class="nav-links"><div class="nav-item"><a href="/" class="nav-link">
+  主页
+</a></div><div class="nav-item"><a href="/note/" class="nav-link router-link-active">
+  学习笔记
+</a></div><div class="nav-item"><a href="/memo/" class="nav-link">
+  备忘录
+</a></div><div class="nav-item"><a href="https://github.com/kaysenyim/blog" target="_blank" rel="noopener noreferrer" class="nav-link external">
+  GitHub
+  <span><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg> <span class="sr-only">(opens new window)</span></span></a></div> <!----></nav>  <ul class="sidebar-links"><li><section class="sidebar-group depth-0"><p class="sidebar-heading open"><span>学习笔记</span> <!----></p> <ul class="sidebar-links sidebar-group-items"><li><a href="/note/spring-boot/spring-boot-starter-mail.html" aria-current="page" class="active sidebar-link">Spring Boot环境中发送邮件</a><ul class="sidebar-sub-headers"><li class="sidebar-sub-header"><a href="/note/spring-boot/spring-boot-starter-mail.html#pom-xml引入spring-boot-starter-mail" class="sidebar-link">pom.xml引入spring-boot-starter-mail</a></li><li class="sidebar-sub-header"><a href="/note/spring-boot/spring-boot-starter-mail.html#application-yml配置" class="sidebar-link">application.yml配置</a></li><li class="sidebar-sub-header"><a href="/note/spring-boot/spring-boot-starter-mail.html#_163邮箱" class="sidebar-link">163邮箱</a></li><li class="sidebar-sub-header"><a href="/note/spring-boot/spring-boot-starter-mail.html#qq邮箱" class="sidebar-link">QQ邮箱</a></li><li class="sidebar-sub-header"><a href="/note/spring-boot/spring-boot-starter-mail.html#gmail邮箱" class="sidebar-link">Gmail邮箱</a><ul class="sidebar-sub-headers"><li class="sidebar-sub-header"><a href="/note/spring-boot/spring-boot-starter-mail.html#service实现类" class="sidebar-link">service实现类</a></li></ul></li><li class="sidebar-sub-header"><a href="/note/spring-boot/spring-boot-starter-mail.html#templates模版" class="sidebar-link">templates模版</a></li><li class="sidebar-sub-header"><a href="/note/spring-boot/spring-boot-starter-mail.html#测试" class="sidebar-link">测试</a></li><li class="sidebar-sub-header"><a href="/note/spring-boot/spring-boot-starter-mail.html#结语" class="sidebar-link">结语</a></li></ul></li><li><a href="/note/git.html" class="sidebar-link">Git常用命令</a><ul class="sidebar-sub-headers"><li class="sidebar-sub-header"><a href="/note/git.html#创建仓库" class="sidebar-link">创建仓库</a></li><li class="sidebar-sub-header"><a href="/note/git.html#设置" class="sidebar-link">设置</a></li><li class="sidebar-sub-header"><a href="/note/git.html#添加-移除文件到暂存区" class="sidebar-link">添加/移除文件到暂存区</a></li><li class="sidebar-sub-header"><a href="/note/git.html#提交暂存区到仓库区" class="sidebar-link">提交暂存区到仓库区</a></li></ul></li></ul></section></li></ul> </aside> <main class="page"> <div class="theme-default-content content__default"><h1 id="spring-boot环境中发送邮件"><a href="#spring-boot环境中发送邮件" class="header-anchor">#</a> Spring Boot环境中发送邮件</h1> <h2 id="pom-xml引入spring-boot-starter-mail"><a href="#pom-xml引入spring-boot-starter-mail" class="header-anchor">#</a> pom.xml引入<code>spring-boot-starter-mail</code></h2> <p>Spring Boot2.x集成了mail模块，在<code>dependencies</code>引入这个</p> <div class="language-xml extra-class"><pre class="language-xml"><code><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>dependency</span><span class="token punctuation">&gt;</span></span>
+	<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>groupId</span><span class="token punctuation">&gt;</span></span>org.springframework.boot<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>groupId</span><span class="token punctuation">&gt;</span></span>
+	<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>artifactId</span><span class="token punctuation">&gt;</span></span>spring-boot-starter-mail<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>artifactId</span><span class="token punctuation">&gt;</span></span>
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>dependency</span><span class="token punctuation">&gt;</span></span>
+</code></pre></div><h2 id="application-yml配置"><a href="#application-yml配置" class="header-anchor">#</a> application.yml配置</h2> <div class="language- extra-class"><pre class="language-text"><code>spring:
+	mail:
+    	# 163
+    	host: smtp.163.com
+    	port:
+    	username: yimcarson@163.com
+    	password: ************
+    	protocol: smtp
+    	default-encoding: UTF-8
+    	properties:
+      		mail.smtp.auth: true
+      		mail.smtp.starttls.enable: true
+      		mail.smtp.starttls.required: true
+      		mail.smtp.socketFactory.port: 465
+      		mail.smtp.socketFactory.class: javax.net.ssl.SSLSocketFactory
+      		mail.smtp.socketFactory.fallback: false
+</code></pre></div><p>其中<code>spring.mail.host</code> <code>spring.mail.port</code> <code>spring.mail.username</code> <code>spring.mail.password</code>不同邮箱的配置方法也不同</p> <h2 id="_163邮箱"><a href="#_163邮箱" class="header-anchor">#</a> 163邮箱</h2> <div class="language- extra-class"><pre class="language-text"><code>spring:
+	mail:
+    		host: smtp.163.com
+    		port:
+    		username: yimcarson@163.com
+    		password: ************
+</code></pre></div><p>其中<code>spring.mail.port</code>不指定；<code>spring.mail.password</code>不是邮箱密码，需要登录<code>mail.163.com</code>，前往<code>设置</code> <code>客户端授权密码</code>中获取的一个16个字符的密码，同时允许POP3/SMTP服务。</p> <p><img src="https://img-blog.csdnimg.cn/20181210101910671.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3lpbWNhcnNvbg==,size_16,color_FFFFFF,t_70" alt="163邮箱设置1"></p> <p><img src="https://img-blog.csdnimg.cn/20181210102018898.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3lpbWNhcnNvbg==,size_16,color_FFFFFF,t_70" alt="163邮箱设置2"></p> <h2 id="qq邮箱"><a href="#qq邮箱" class="header-anchor">#</a> QQ邮箱</h2> <div class="language- extra-class"><pre class="language-text"><code>spring:
+	mail:
+    		host: smtp.qq.com
+    		port: 587
+    		username: yimcarson@qq.com
+    		password: ************
+</code></pre></div><p><code>spring.mail.password</code>不是QQ密码，登录<code>mail.qq.com</code>，前往<code>设置</code> <code>账户</code> <code>POP3/IMAP/SMTP/Exchange/CardDAV/CalDAV服务</code>开启<code>POP3/SMTP服务</code>获取一个16个字符的密码</p> <p><img src="https://img-blog.csdnimg.cn/20181210101244184.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3lpbWNhcnNvbg==,size_16,color_FFFFFF,t_70" alt="mail.163.com设置"></p> <h2 id="gmail邮箱"><a href="#gmail邮箱" class="header-anchor">#</a> Gmail邮箱</h2> <div class="language- extra-class"><pre class="language-text"><code>spring:
+	mail: 
+		host: smtp.gmail.com
+		port: 465
+		username: yimcarson@gmail.com
+		password: ****************
+</code></pre></div><p><code>spring.mail.password</code>是Gmail的密码，但是要前往Google账户的<a href="https://myaccount.google.com/lesssecureapps" target="_blank" rel="noopener noreferrer">安全性较低的应用的访问权限<span><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg> <span class="sr-only">(opens new window)</span></span></a>中允许不安全应用。</p> <p><img src="https://img-blog.csdnimg.cn/2018121010143628.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3lpbWNhcnNvbg==,size_16,color_FFFFFF,t_70" alt="Google账户设置"></p> <h1 id="发送邮件"><a href="#发送邮件" class="header-anchor">#</a> 发送邮件</h1> <p>这是一个验证码模版邮件</p> <h3 id="service实现类"><a href="#service实现类" class="header-anchor">#</a> service实现类</h3> <div class="language-java extra-class"><pre class="language-java"><code><span class="token keyword">import</span> <span class="token namespace">com<span class="token punctuation">.</span>my<span class="token punctuation">.</span>demo<span class="token punctuation">.</span>project<span class="token punctuation">.</span>service<span class="token punctuation">.</span></span><span class="token class-name">MailService</span><span class="token punctuation">;</span>
+<span class="token keyword">import</span> <span class="token namespace">org<span class="token punctuation">.</span>springframework<span class="token punctuation">.</span>beans<span class="token punctuation">.</span>factory<span class="token punctuation">.</span>annotation<span class="token punctuation">.</span></span><span class="token class-name">Autowired</span><span class="token punctuation">;</span>
+<span class="token keyword">import</span> <span class="token namespace">org<span class="token punctuation">.</span>springframework<span class="token punctuation">.</span>beans<span class="token punctuation">.</span>factory<span class="token punctuation">.</span>annotation<span class="token punctuation">.</span></span><span class="token class-name">Value</span><span class="token punctuation">;</span>
+<span class="token keyword">import</span> <span class="token namespace">org<span class="token punctuation">.</span>springframework<span class="token punctuation">.</span>mail<span class="token punctuation">.</span></span><span class="token class-name">SimpleMailMessage</span><span class="token punctuation">;</span>
+<span class="token keyword">import</span> <span class="token namespace">org<span class="token punctuation">.</span>springframework<span class="token punctuation">.</span>mail<span class="token punctuation">.</span>javamail<span class="token punctuation">.</span></span><span class="token class-name">JavaMailSender</span><span class="token punctuation">;</span>
+<span class="token keyword">import</span> <span class="token namespace">org<span class="token punctuation">.</span>springframework<span class="token punctuation">.</span>mail<span class="token punctuation">.</span>javamail<span class="token punctuation">.</span></span><span class="token class-name">MimeMessageHelper</span><span class="token punctuation">;</span>
+<span class="token keyword">import</span> <span class="token namespace">org<span class="token punctuation">.</span>springframework<span class="token punctuation">.</span>mail<span class="token punctuation">.</span>javamail<span class="token punctuation">.</span></span><span class="token class-name">MimeMessagePreparator</span><span class="token punctuation">;</span>
+<span class="token keyword">import</span> <span class="token namespace">org<span class="token punctuation">.</span>springframework<span class="token punctuation">.</span>stereotype<span class="token punctuation">.</span></span><span class="token class-name">Service</span><span class="token punctuation">;</span>
+<span class="token keyword">import</span> <span class="token namespace">org<span class="token punctuation">.</span>thymeleaf<span class="token punctuation">.</span></span><span class="token class-name">TemplateEngine</span><span class="token punctuation">;</span>
+<span class="token keyword">import</span> <span class="token namespace">org<span class="token punctuation">.</span>thymeleaf<span class="token punctuation">.</span>context<span class="token punctuation">.</span></span><span class="token class-name">Context</span><span class="token punctuation">;</span>
+
+<span class="token keyword">import</span> <span class="token namespace">javax<span class="token punctuation">.</span>mail<span class="token punctuation">.</span></span><span class="token operator">*</span><span class="token punctuation">;</span>
+<span class="token keyword">import</span> <span class="token namespace">javax<span class="token punctuation">.</span>mail<span class="token punctuation">.</span>internet<span class="token punctuation">.</span></span><span class="token class-name">InternetAddress</span><span class="token punctuation">;</span>
+<span class="token keyword">import</span> <span class="token namespace">javax<span class="token punctuation">.</span>mail<span class="token punctuation">.</span>internet<span class="token punctuation">.</span></span><span class="token class-name">MimeMessage</span><span class="token punctuation">;</span>
+<span class="token keyword">import</span> <span class="token namespace">java<span class="token punctuation">.</span>util<span class="token punctuation">.</span></span><span class="token class-name">Properties</span><span class="token punctuation">;</span>
+<span class="token keyword">import</span> <span class="token namespace">java<span class="token punctuation">.</span>util<span class="token punctuation">.</span></span>UUID<span class="token punctuation">;</span>
+
+<span class="token annotation punctuation">@Service</span>
+<span class="token keyword">public</span> <span class="token keyword">class</span> <span class="token class-name">MailServiceImpl</span> <span class="token keyword">implements</span> <span class="token class-name">MailService</span> <span class="token punctuation">{</span>
+
+    <span class="token annotation punctuation">@Autowired</span>
+    <span class="token keyword">private</span> <span class="token class-name">JavaMailSender</span> mailSender<span class="token punctuation">;</span>
+
+    <span class="token comment">/**
+     * 用来发送模版邮件
+     */</span>
+    <span class="token annotation punctuation">@Autowired</span>
+    <span class="token keyword">private</span> <span class="token class-name">TemplateEngine</span> templateEngine<span class="token punctuation">;</span>
+
+    <span class="token annotation punctuation">@Value</span><span class="token punctuation">(</span><span class="token string">&quot;${spring.mail.username}&quot;</span><span class="token punctuation">)</span>
+    <span class="token keyword">private</span> <span class="token class-name">String</span> from<span class="token punctuation">;</span>
+
+    <span class="token annotation punctuation">@Override</span>
+    <span class="token keyword">public</span> <span class="token keyword">void</span> <span class="token function">send</span><span class="token punctuation">(</span><span class="token class-name">String</span> <span class="token keyword">to</span><span class="token punctuation">,</span> <span class="token class-name">String</span> subject<span class="token punctuation">,</span> <span class="token class-name">String</span> text<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+
+<span class="token comment">//        SimpleMailMessage message = new SimpleMailMessage();</span>
+<span class="token comment">//        message.setFrom(from);</span>
+<span class="token comment">//        message.setTo(to);</span>
+<span class="token comment">//        message.setSubject(subject);</span>
+<span class="token comment">//        message.setText(text);</span>
+
+        <span class="token class-name">Context</span> context <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">Context</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        context<span class="token punctuation">.</span><span class="token function">setVariable</span><span class="token punctuation">(</span><span class="token string">&quot;project&quot;</span><span class="token punctuation">,</span> <span class="token string">&quot;demo&quot;</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        context<span class="token punctuation">.</span><span class="token function">setVariable</span><span class="token punctuation">(</span><span class="token string">&quot;author&quot;</span><span class="token punctuation">,</span> <span class="token string">&quot;yimcarson&quot;</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        context<span class="token punctuation">.</span><span class="token function">setVariable</span><span class="token punctuation">(</span><span class="token string">&quot;code&quot;</span><span class="token punctuation">,</span> text<span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token class-name">String</span> emailContent <span class="token operator">=</span> templateEngine<span class="token punctuation">.</span><span class="token function">process</span><span class="token punctuation">(</span><span class="token string">&quot;mail&quot;</span><span class="token punctuation">,</span> context<span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+        <span class="token class-name">MimeMessage</span> message <span class="token operator">=</span> mailSender<span class="token punctuation">.</span><span class="token function">createMimeMessage</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token class-name">MimeMessageHelper</span> helper <span class="token operator">=</span> <span class="token keyword">null</span><span class="token punctuation">;</span>
+        <span class="token keyword">try</span> <span class="token punctuation">{</span>
+            helper <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">MimeMessageHelper</span><span class="token punctuation">(</span>message<span class="token punctuation">,</span> <span class="token boolean">true</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+            helper<span class="token punctuation">.</span><span class="token function">setFrom</span><span class="token punctuation">(</span>from<span class="token punctuation">)</span><span class="token punctuation">;</span>
+            helper<span class="token punctuation">.</span><span class="token function">setTo</span><span class="token punctuation">(</span><span class="token keyword">to</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+            helper<span class="token punctuation">.</span><span class="token function">setSubject</span><span class="token punctuation">(</span>subject<span class="token punctuation">)</span><span class="token punctuation">;</span>
+            helper<span class="token punctuation">.</span><span class="token function">setText</span><span class="token punctuation">(</span>emailContent<span class="token punctuation">,</span> <span class="token boolean">true</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token punctuation">}</span> <span class="token keyword">catch</span> <span class="token punctuation">(</span><span class="token class-name">MessagingException</span> e<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+            e<span class="token punctuation">.</span><span class="token function">printStackTrace</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token punctuation">}</span>
+        mailSender<span class="token punctuation">.</span><span class="token function">send</span><span class="token punctuation">(</span>message<span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+</code></pre></div><h2 id="templates模版"><a href="#templates模版" class="header-anchor">#</a> templates模版</h2> <div class="language-xml extra-class"><pre class="language-xml"><code><span class="token doctype"><span class="token punctuation">&lt;!</span><span class="token doctype-tag">DOCTYPE</span> <span class="token name">html</span><span class="token punctuation">&gt;</span></span>
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>html</span> <span class="token attr-name">lang</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">&quot;</span>en<span class="token punctuation">&quot;</span></span> <span class="token attr-name"><span class="token namespace">xmlns:</span>th</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">&quot;</span>http://www.thymeleaf.org<span class="token punctuation">&quot;</span></span><span class="token punctuation">&gt;</span></span>
+	<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>head</span><span class="token punctuation">&gt;</span></span>
+	    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>meta</span> <span class="token attr-name">charset</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">&quot;</span>UTF-8<span class="token punctuation">&quot;</span></span><span class="token punctuation">&gt;</span></span>
+	    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>title</span><span class="token punctuation">&gt;</span></span>yimcarson<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>title</span><span class="token punctuation">&gt;</span></span>
+	    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>style</span><span class="token punctuation">&gt;</span></span>
+	        body {
+	            text-align: center;
+	            margin-left: auto;
+	            margin-right: auto;
+	        }
+	        #main {
+	            text-align: center;
+	            position: absolute;
+	        }
+	    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>style</span><span class="token punctuation">&gt;</span></span>
+	<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>head</span><span class="token punctuation">&gt;</span></span>
+	<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>body</span><span class="token punctuation">&gt;</span></span>
+		<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>div</span> <span class="token attr-name">id</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">&quot;</span>main<span class="token punctuation">&quot;</span></span><span class="token punctuation">&gt;</span></span>
+	    	<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>h3</span><span class="token punctuation">&gt;</span></span>Welcome <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>span</span> <span class="token attr-name"><span class="token namespace">th:</span>text</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">&quot;</span>${project}<span class="token punctuation">&quot;</span></span><span class="token punctuation">&gt;</span></span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>span</span><span class="token punctuation">&gt;</span></span> -By <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>span</span> <span class="token attr-name"><span class="token namespace">th:</span>text</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">&quot;</span> ${author}<span class="token punctuation">&quot;</span></span><span class="token punctuation">&gt;</span></span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>span</span><span class="token punctuation">&gt;</span></span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>h3</span><span class="token punctuation">&gt;</span></span>
+	    	Your Verification Code is
+	    	<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>h2</span><span class="token punctuation">&gt;</span></span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>span</span> <span class="token attr-name"><span class="token namespace">th:</span>text</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">&quot;</span>${code}<span class="token punctuation">&quot;</span></span><span class="token punctuation">&gt;</span></span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>span</span><span class="token punctuation">&gt;</span></span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>h2</span><span class="token punctuation">&gt;</span></span>
+		<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>div</span><span class="token punctuation">&gt;</span></span>
+	<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>body</span><span class="token punctuation">&gt;</span></span>
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>html</span><span class="token punctuation">&gt;</span></span>
+</code></pre></div><h2 id="测试"><a href="#测试" class="header-anchor">#</a> 测试</h2> <div class="language-java extra-class"><pre class="language-java"><code><span class="token keyword">import</span> <span class="token namespace">com<span class="token punctuation">.</span>my<span class="token punctuation">.</span>demo<span class="token punctuation">.</span></span><span class="token class-name">Application</span><span class="token punctuation">;</span>
+<span class="token keyword">import</span> <span class="token namespace">org<span class="token punctuation">.</span>junit<span class="token punctuation">.</span></span><span class="token class-name">Test</span><span class="token punctuation">;</span>
+<span class="token keyword">import</span> <span class="token namespace">org<span class="token punctuation">.</span>junit<span class="token punctuation">.</span>runner<span class="token punctuation">.</span></span><span class="token class-name">RunWith</span><span class="token punctuation">;</span>
+<span class="token keyword">import</span> <span class="token namespace">org<span class="token punctuation">.</span>springframework<span class="token punctuation">.</span>beans<span class="token punctuation">.</span>factory<span class="token punctuation">.</span>annotation<span class="token punctuation">.</span></span><span class="token class-name">Autowired</span><span class="token punctuation">;</span>
+<span class="token keyword">import</span> <span class="token namespace">org<span class="token punctuation">.</span>springframework<span class="token punctuation">.</span>boot<span class="token punctuation">.</span>test<span class="token punctuation">.</span>context<span class="token punctuation">.</span></span><span class="token class-name">SpringBootTest</span><span class="token punctuation">;</span>
+<span class="token keyword">import</span> <span class="token namespace">org<span class="token punctuation">.</span>springframework<span class="token punctuation">.</span>test<span class="token punctuation">.</span>context<span class="token punctuation">.</span>junit4<span class="token punctuation">.</span></span><span class="token class-name">SpringRunner</span><span class="token punctuation">;</span>
+<span class="token keyword">import</span> <span class="token namespace">org<span class="token punctuation">.</span>thymeleaf<span class="token punctuation">.</span></span><span class="token class-name">TemplateEngine</span><span class="token punctuation">;</span>
+
+<span class="token keyword">import</span> <span class="token namespace">java<span class="token punctuation">.</span>util<span class="token punctuation">.</span></span><span class="token class-name">Date</span><span class="token punctuation">;</span>
+<span class="token keyword">import</span> <span class="token namespace">java<span class="token punctuation">.</span>util<span class="token punctuation">.</span></span>UUID<span class="token punctuation">;</span>
+
+<span class="token annotation punctuation">@RunWith</span><span class="token punctuation">(</span><span class="token class-name">SpringRunner</span><span class="token punctuation">.</span><span class="token keyword">class</span><span class="token punctuation">)</span>
+<span class="token annotation punctuation">@SpringBootTest</span><span class="token punctuation">(</span>classes <span class="token operator">=</span> <span class="token punctuation">{</span><span class="token class-name">Application</span><span class="token punctuation">.</span><span class="token keyword">class</span><span class="token punctuation">}</span><span class="token punctuation">)</span>
+<span class="token keyword">public</span> <span class="token keyword">class</span> <span class="token class-name">MailServiceTest</span> <span class="token punctuation">{</span>
+    <span class="token annotation punctuation">@Autowired</span>
+    <span class="token keyword">private</span> <span class="token class-name">MailService</span> mailService<span class="token punctuation">;</span>
+
+    <span class="token annotation punctuation">@Test</span>
+    <span class="token keyword">public</span> <span class="token keyword">void</span> <span class="token function">testSend</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    	<span class="token class-name">String</span> <span class="token keyword">to</span> <span class="token operator">=</span> <span class="token string">&quot;yimcarson@qq.com&quot;</span><span class="token punctuation">;</span>
+		mailService<span class="token punctuation">.</span><span class="token function">send</span><span class="token punctuation">(</span><span class="token keyword">to</span><span class="token punctuation">,</span> <span class="token string">&quot;模板邮件&quot;</span><span class="token punctuation">,</span> UUID<span class="token punctuation">.</span><span class="token function">randomUUID</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">toString</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">toUpperCase</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+</code></pre></div><p><img src="https://img-blog.csdnimg.cn/20181210103736543.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3lpbWNhcnNvbg==,size_16,color_FFFFFF,t_70" alt="接收到的模版邮件"></p> <h2 id="结语"><a href="#结语" class="header-anchor">#</a> 结语</h2> <p><code>163</code> <code>QQ</code>这两个邮箱比较常用，至于<code>Gmail</code>……，如果服务器是阿里云香港或者国外、亚马逊这些的话可以正常使用，否则……，<code>Couldn't connect to host, port: smtp.gmail.com, 465; timeout -1</code></p> <p><img src="https://img-blog.csdnimg.cn/20181210104709323.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3lpbWNhcnNvbg==,size_16,color_FFFFFF,t_70" alt="Couldn't connect to host, port: smtp.gmail.com, 465; timeout -1"></p></div> <footer class="page-edit"><!----> <div class="last-updated"><span class="prefix">上次更新时间:</span> <span class="time">7/23/2021, 1:03:37 PM</span></div></footer> <div class="page-nav"><p class="inner"><!----> <span class="next"><a href="/note/git.html">
+        Git常用命令
+      </a>
+      →
+    </span></p></div> </main></div><div class="global-ui"><!----><fixed></fixed></div></div>
+    <script src="/assets/js/app.4d919b69.js" defer></script><script src="/assets/js/2.42c6ae38.js" defer></script><script src="/assets/js/13.91ef520a.js" defer></script>
+  </body>
+</html>

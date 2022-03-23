@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en-US">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>MySQL 部署文档 | Kaysen&#39;s blog</title>
+    <meta name="generator" content="VuePress 1.8.2">
+    
+    <meta name="description" content="Just playing around">
+    
+    <link rel="preload" href="/assets/css/0.styles.2ef9e0c9.css" as="style"><link rel="preload" href="/assets/js/app.4d919b69.js" as="script"><link rel="preload" href="/assets/js/2.42c6ae38.js" as="script"><link rel="preload" href="/assets/js/9.042ac3b8.js" as="script"><link rel="prefetch" href="/assets/js/10.d5f82858.js"><link rel="prefetch" href="/assets/js/11.0b203a46.js"><link rel="prefetch" href="/assets/js/12.ad77b067.js"><link rel="prefetch" href="/assets/js/13.91ef520a.js"><link rel="prefetch" href="/assets/js/3.38df5c0a.js"><link rel="prefetch" href="/assets/js/4.989f8b1d.js"><link rel="prefetch" href="/assets/js/5.5d3de586.js"><link rel="prefetch" href="/assets/js/6.f87804d9.js"><link rel="prefetch" href="/assets/js/7.11df132b.js"><link rel="prefetch" href="/assets/js/8.eb16add6.js">
+    <link rel="stylesheet" href="/assets/css/0.styles.2ef9e0c9.css">
+  </head>
+  <body>
+    <div id="app" data-server-rendered="true"><div class="theme-container"><header class="navbar"><div class="sidebar-button"><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" role="img" viewBox="0 0 448 512" class="icon"><path fill="currentColor" d="M436 124H12c-6.627 0-12-5.373-12-12V80c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12zm0 160H12c-6.627 0-12-5.373-12-12v-32c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12zm0 160H12c-6.627 0-12-5.373-12-12v-32c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12z"></path></svg></div> <a href="/" class="home-link router-link-active"><!----> <span class="site-name">Kaysen's blog</span></a> <div class="links"><div class="search-box"><input aria-label="Search" autocomplete="off" spellcheck="false" value=""> <!----></div> <nav class="nav-links can-hide"><div class="nav-item"><a href="/" class="nav-link">
+  主页
+</a></div><div class="nav-item"><a href="/note/" class="nav-link">
+  学习笔记
+</a></div><div class="nav-item"><a href="/memo/" class="nav-link router-link-active">
+  备忘录
+</a></div><div class="nav-item"><a href="https://github.com/kaysenyim/blog" target="_blank" rel="noopener noreferrer" class="nav-link external">
+  GitHub
+  <span><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg> <span class="sr-only">(opens new window)</span></span></a></div> <!----></nav></div></header> <div class="sidebar-mask"></div> <aside class="sidebar"><nav class="nav-links"><div class="nav-item"><a href="/" class="nav-link">
+  主页
+</a></div><div class="nav-item"><a href="/note/" class="nav-link">
+  学习笔记
+</a></div><div class="nav-item"><a href="/memo/" class="nav-link router-link-active">
+  备忘录
+</a></div><div class="nav-item"><a href="https://github.com/kaysenyim/blog" target="_blank" rel="noopener noreferrer" class="nav-link external">
+  GitHub
+  <span><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg> <span class="sr-only">(opens new window)</span></span></a></div> <!----></nav>  <ul class="sidebar-links"><li><section class="sidebar-group depth-0"><p class="sidebar-heading open"><span>备忘录</span> <!----></p> <ul class="sidebar-links sidebar-group-items"><li><a href="/memo/nginx.html" class="sidebar-link">CentOS Nginx部署文档</a></li><li><a href="/memo/mysql.html" aria-current="page" class="active sidebar-link">MySQL 部署文档</a></li></ul></section></li></ul> </aside> <main class="page"> <div class="theme-default-content content__default"><h1 id="mysql-部署文档"><a href="#mysql-部署文档" class="header-anchor">#</a> MySQL 部署文档</h1> <div class="language-shell extra-class"><pre class="language-shell"><code>yum <span class="token function">install</span> libaio autoconf -y
+</code></pre></div><div class="language-shell extra-class"><pre class="language-shell"><code><span class="token function">wget</span> https://cdn.mysql.com/archives/mysql-5.6/mysql-5.6.37-linux-glibc2.12-x86_64.tar.gz
+</code></pre></div><div class="language-shell extra-class"><pre class="language-shell"><code><span class="token function">tar</span> -zxvf mysql-5.6.37-linux-glibc2.12-x86_64.tar.gz
+</code></pre></div><div class="language-shell extra-class"><pre class="language-shell"><code><span class="token function">mv</span> mysql-5.6.37-linux-glibc2.12-x86_64 /usr/local/mysql
+</code></pre></div><div class="language-shell extra-class"><pre class="language-shell"><code><span class="token function">mkdir</span> -p /data/mysql3306
+</code></pre></div><div class="language-shell extra-class"><pre class="language-shell"><code><span class="token function">groupadd</span> mysql
+</code></pre></div><div class="language-shell extra-class"><pre class="language-shell"><code><span class="token function">useradd</span> -r -g mysql -s /bin/false mysql
+</code></pre></div><div class="language-shell extra-class"><pre class="language-shell"><code><span class="token function">chown</span> -R mysql:mysql /data/mysql3306
+</code></pre></div><div class="language-shell extra-class"><pre class="language-shell"><code><span class="token function">vim</span> /data/mysql3306/my3306.cnf
+</code></pre></div><div class="language-tex extra-class"><pre class="language-tex"><code># The MySQL server
+<span class="token punctuation">[</span>mysqld<span class="token punctuation">]</span>
+user=mysql
+port=3306
+datadir=/data/mysql3306
+tmpdir=/tmp
+slave-load-tmpdir=/tmp
+socket=/tmp/mysql3306.sock
+join_buffer_size=2M
+sort_buffer_size=4M
+read_buffer_size=2M
+read_rnd_buffer_size=2M
+thread_cache_size=64
+thread_concurrency=32
+max_connect_errors=99999999
+long_query_time=1
+slow-query-log=1
+slow-query-log-file=/data/mysql3306/show3306.log
+back_log=600
+myisam_repair_threads=1
+myisam_recover_options=force,backup
+expire_logs_days=10
+interactive_timeout=3600
+wait_timeout=3600
+#old_passwords=1
+skip-slave-start=1
+skip-name-resolve
+max_user_connections=2000
+max_connections=3000
+character-set-server=utf8
+read_only=0
+log-slave-updates=1
+secure_file_priv=''
+event_scheduler=1
+innodb_checksum_algorithm=innodb
+innodb_data_file_path=ibdata1:200M:autoextend
+innodb_log_files_in_group=2
+innodb_log_file_size=1048576000
+innodb_page_size=16384
+innodb_undo_directory=.
+innodb_undo_tablespaces=0
+master-info-repository=file
+relay-log-info_repository=file
+#------------- innodb --------------
+innodb_buffer_pool_size=16G
+innodb_additional_mem_pool_size=1M
+innodb_flush_log_at_trx_commit=0
+innodb_log_buffer_size=8M
+innodb_max_dirty_pages_pct=90
+innodb_lock_wait_timeout=20
+innodb_file_per_table=1
+innodb_flush_method=O_DIRECT
+innodb_support_xa=0
+innodb_io_capacity=500
+innodb_buffer_pool_instances=10
+server-id=890903306
+log-bin=mysql-bin
+relay-log=relay-bin
+log-error=/data/mysql3306/error3306.log
+<span class="token punctuation">[</span>myisamchk<span class="token punctuation">]</span>
+key_buffer=64M
+sort_buffer_size=32M
+read_buffer=16M
+write_buffer=16M
+</code></pre></div><div class="language-shell extra-class"><pre class="language-shell"><code><span class="token builtin class-name">cd</span> /usr/local/mysql/scripts
+</code></pre></div><div class="language-shell extra-class"><pre class="language-shell"><code>mysql_install_db --defaults-file<span class="token operator">=</span>/data/mysql3306/my3306.cnf --basedir<span class="token operator">=</span>/usr/local/mysql/ --datadir<span class="token operator">=</span>/data/mysql3306/ --user<span class="token operator">=</span>mysql
+</code></pre></div><div class="language-shell extra-class"><pre class="language-shell"><code><span class="token builtin class-name">export</span> <span class="token assign-left variable"><span class="token environment constant">PATH</span></span><span class="token operator">=</span>/usr/local/mysql/bin:<span class="token environment constant">$PATH</span>
+</code></pre></div><div class="language-shell extra-class"><pre class="language-shell"><code>mysqld_safe --defaults-file<span class="token operator">=</span>/data/mysql3306/my3306.cnf <span class="token operator">&amp;</span>
+</code></pre></div><div class="language-shell extra-class"><pre class="language-shell"><code>mysql --socket<span class="token operator">=</span>/tmp/mysql3306.sock –uroot –p
+</code></pre></div><div class="language-shell extra-class"><pre class="language-shell"><code>update user <span class="token builtin class-name">set</span> <span class="token assign-left variable">password</span><span class="token operator">=</span>password<span class="token punctuation">(</span><span class="token string">&quot;123456&quot;</span><span class="token punctuation">)</span> where <span class="token assign-left variable">user</span><span class="token operator">=</span><span class="token string">&quot;root&quot;</span><span class="token punctuation">;</span>
+</code></pre></div><div class="language-shell extra-class"><pre class="language-shell"><code>flush privileges<span class="token punctuation">;</span>
+</code></pre></div><div class="language-shell extra-class"><pre class="language-shell"><code>create user <span class="token string">'test'</span>@<span class="token string">'%'</span> identified by <span class="token string">'123456'</span><span class="token punctuation">;</span>
+</code></pre></div><div class="language-shell extra-class"><pre class="language-shell"><code>grant all privileges on *.* to <span class="token string">'test'</span>@<span class="token string">'%'</span> with grant option<span class="token punctuation">;</span>
+</code></pre></div><h1 id="mysql8"><a href="#mysql8" class="header-anchor">#</a> mysql8</h1> <ul><li>临时修改密码等级</li></ul> <div class="language-shell extra-class"><pre class="language-shell"><code><span class="token builtin class-name">set</span> global validate_password.policy<span class="token operator">=</span><span class="token number">0</span><span class="token punctuation">;</span>
+</code></pre></div><div class="language-shell extra-class"><pre class="language-shell"><code><span class="token builtin class-name">set</span> global validate_password.length<span class="token operator">=</span><span class="token number">6</span><span class="token punctuation">;</span>
+</code></pre></div><ul><li>创建用户</li></ul> <div class="language-shell extra-class"><pre class="language-shell"><code>CREATE <span class="token environment constant">USER</span> <span class="token string">'username'</span>@<span class="token string">'host'</span> IDENTIFIED WITH mysql_native_password BY <span class="token string">'password'</span><span class="token punctuation">;</span>
+</code></pre></div><ul><li>授权</li></ul> <div class="language-shell extra-class"><pre class="language-shell"><code>GRANT privileges ON <span class="token variable"><span class="token variable">`</span>database<span class="token variable">`</span></span><span class="token builtin class-name">.</span><span class="token variable"><span class="token variable">`</span>table<span class="token variable">`</span></span> TO <span class="token string">'username'</span>@<span class="token string">'host'</span> <span class="token punctuation">[</span>WITH GRANT OPTION<span class="token punctuation">]</span><span class="token punctuation">;</span>
+</code></pre></div><blockquote><p>privileges: SELECT, INSERT, UPDATE, DELETE, CREATE, DROP or ALL PRIVILEGES</p> <p>database.table:</p> <p>WITH GRANT OPTION: 用户是否可以授权</p></blockquote> <div class="language-shell extra-class"><pre class="language-shell"><code>GRANT ALL PRIVILEGES ON *.* TO <span class="token string">'username'</span>@<span class="token string">'host'</span> WITH GRANT OPTION<span class="token punctuation">;</span>
+</code></pre></div><div class="language-shell extra-class"><pre class="language-shell"><code>FLUSH PRIVILEGES<span class="token punctuation">;</span>
+</code></pre></div><div class="language-shell extra-class"><pre class="language-shell"><code>SHOW GRANTS FOR <span class="token string">'username'</span>@<span class="token string">'host'</span>
+</code></pre></div><ul><li>撤销权限</li></ul> <div class="language-shell extra-class"><pre class="language-shell"><code>REVOKE privilege ON <span class="token variable"><span class="token variable">`</span>database<span class="token variable">`</span></span><span class="token builtin class-name">.</span><span class="token variable"><span class="token variable">`</span>table<span class="token variable">`</span></span> FROM <span class="token string">'username'</span>@<span class="token string">'host'</span><span class="token punctuation">;</span>
+</code></pre></div><ul><li>修改密码</li></ul> <div class="language-shell extra-class"><pre class="language-shell"><code>ALTER <span class="token environment constant">USER</span> <span class="token string">'username'</span>@<span class="token string">'host'</span> IDENTIFIED WITH mysql_native_password BY <span class="token string">'password'</span><span class="token punctuation">;</span>
+</code></pre></div><ul><li>删除用户</li></ul> <div class="language-shell extra-class"><pre class="language-shell"><code>DROP <span class="token environment constant">USER</span> <span class="token string">'username'</span>@<span class="token string">'host'</span><span class="token punctuation">;</span>
+</code></pre></div></div> <footer class="page-edit"><!----> <!----></footer> <div class="page-nav"><p class="inner"><span class="prev">
+      ←
+      <a href="/memo/nginx.html" class="prev">
+        CentOS Nginx部署文档
+      </a></span> <!----></p></div> </main></div><div class="global-ui"><!----><fixed></fixed></div></div>
+    <script src="/assets/js/app.4d919b69.js" defer></script><script src="/assets/js/2.42c6ae38.js" defer></script><script src="/assets/js/9.042ac3b8.js" defer></script>
+  </body>
+</html>
